@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <!-- <ion-nav [root]="rootPage"></ion-nav>   -->
+    <ion-title>Book List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-input type="text" placeholder="Search..." (input)="searchBooks($event)">   
+ </ion-input>
+  <ion-list *ngIf="!isfiltered">
+    <ion-item *ngFor="let book1 of bookList" (click)="itemTapped($event, book1)">
+      <h2>{{book1.author}}</h2>
+      <p class="item-description">{{book1.title}}</p>
+    </ion-item> 
+  </ion-list>
+  <ion-list *ngIf="isfiltered">
+    <ion-item *ngFor="let book of filteredBooks" (click)="itemTapped($event, book)">
+      <h2>{{book.author}}</h2>
+      <p class="item-description">{{book.title}}</p>
+    </ion-item>
+  </ion-list> 
+</ion-content>
