@@ -8,32 +8,33 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BookListPage } from '../pages/book-list/book-list';
 import { BookDetailsPage } from '../pages/book-details/book-details';
-import { ScanPage } from '../pages/scan/scan';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
-    MyApp,
-    BookDetailsPage,
-    BookListPage,
+    MyApp,    
     HomePage,
-    ScanPage
+    BookListPage,
+    BookDetailsPage    
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp)    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,    
     HomePage,
-    BookDetailsPage,
-    BookListPage,
-    ScanPage
+    BookListPage,     
+    BookDetailsPage      
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BarcodeScanner
   ]
 })
 export class AppModule {}
