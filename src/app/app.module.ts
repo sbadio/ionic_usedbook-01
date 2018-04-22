@@ -10,6 +10,7 @@ import { BookListPage } from '../pages/book-list/book-list';
 import { BookDetailsPage } from '../pages/book-details/book-details';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HttpModule } from '@angular/http';
+import { Books } from '../providers/books/books';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BarcodeScanner
+    BarcodeScanner,
+    Books
   ]
 })
 export class AppModule {}

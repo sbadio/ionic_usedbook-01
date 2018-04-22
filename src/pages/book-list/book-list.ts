@@ -4,6 +4,7 @@ import { IonicPage, NavController } from "ionic-angular";
 import { Http } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { BookDetailsPage } from "../book-details/book-details";
+import { Books } from "../../providers/books/books";
 
 @IonicPage()
 @Component({
@@ -16,9 +17,9 @@ export class BookListPage {
   isfiltered: boolean;
   navController: any;
 
-  constructor(private http: Http, public navCtrl: NavController) {
+  constructor(private http: Http, public navCtrl: NavController, public booksProvider: Books) {
     this.isfiltered = false;
-    this.http.get('/assets/json/books.json')
+    this.http.get('/assets/json/books2.json')
       .map(res => res.json())
       .subscribe(
         data => {
@@ -31,7 +32,8 @@ export class BookListPage {
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad BookListPage");
+   // console.log("ionViewDidLoad BookListPage");
+    this.booksProvider.load();
   }
 
   searchBook(event) {

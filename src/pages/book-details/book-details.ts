@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   
 })
 export class BookDetailsPage {
-  bookDetail: {title:'', author:''};
+  bookDetail: {isbn:'', title:'', subtitle:'', author:'', published:'', publisher:'', pages:'', description:'', website:''};
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams

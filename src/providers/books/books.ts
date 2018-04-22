@@ -1,6 +1,23 @@
+import { Injectable } from '@angular/core';
 
-{
-    "books": [
+/*
+  Generated class for the BooksProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+@Injectable()
+export class Books {
+
+  books: any = [];
+
+  constructor() {
+    console.log('Hello BooksProvider Provider');
+  }
+
+
+  load(){
+    this.books = [
         {
         "isbn": "9781593275846",
         "title": "Eloquent JavaScript, Second Edition",
@@ -90,4 +107,8 @@
         "website": "http://chimera.labs.oreilly.com/books/1234000001708/index.html"
         }
     ]
+}
+
+
+
 }
