@@ -1,2 +1,12 @@
-page-book-list { 
+.md {
+  page-book-list {
+    ion-item {
+      width: 96%;
+      margin: 10px 2%;
+
+      ion-avatar {
+        opacity: 0.5;
+      }
+    }
+  }
 }

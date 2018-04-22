@@ -16,10 +16,11 @@ export class BookListPage {
   filteredBooks = [];
   isfiltered: boolean;
   navController: any;
+ 
 
   constructor(private http: Http, public navCtrl: NavController, public booksProvider: Books) {
     this.isfiltered = false;
-    this.http.get('/assets/json/books2.json')
+    this.http.get('/assets/json/books.json')
       .map(res => res.json())
       .subscribe(
         data => {
@@ -32,7 +33,7 @@ export class BookListPage {
   }
 
   ionViewDidLoad() {
-   // console.log("ionViewDidLoad BookListPage");
+   console.log("ionViewDidLoad BookListPage");
     this.booksProvider.load();
   }
 

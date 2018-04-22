@@ -13,20 +13,20 @@
   
   <ion-list *ngIf="!isfiltered">
     <ion-item *ngFor="let book1 of bookList" (click)="itemTapped($event,book1)">
-      <ion-avatar>
+      <ion-thumbnail item-left>
         <img src="http://placehold.it/300X300"/>
-      </ion-avatar>
+      </ion-thumbnail>
       
-      {{book1.title}}
+      <p>{{book1.title}}</p>
       <p>{{book1.author}}</p>
     </ion-item>    
   </ion-list>
 
   <ion-list *ngIf="isfiltered">
     <ion-item *ngFor="let book of filteredBooks" (click)="itemTapped($event,book)">
-        <ion-avatar>
+      <ion-thumbnail item-left>
             <img src="http://placehold.it/300X300"/>
-          </ion-avatar>
+      </ion-thumbnail>
       <p>{{book.title}}</p>
       <p>{{book.author}}</p>
     </ion-item>
