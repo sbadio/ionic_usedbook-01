@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { BookListPage } from '../pages/book-list/book-list';
 import { BookDetailsPage } from '../pages/book-details/book-details';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from "../pages/register/register";
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HttpModule } from '@angular/http';
@@ -22,7 +23,8 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
 @NgModule({
   declarations: [
     MyApp,    
-    LoginPage,    
+    LoginPage,
+    RegisterPage,    
     BookListPage,
     BookDetailsPage,
     HomePage    
@@ -36,11 +38,12 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,    
-    LoginPage,    
+    MyApp,
+    LoginPage,
+    RegisterPage,
     BookListPage,     
     BookDetailsPage,
-    HomePage      
+    HomePage
   ],
   providers: [
     StatusBar,

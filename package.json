@@ -1,8 +1,8 @@
 {
   "name": "ionic_usedbook-01",
   "version": "0.0.1",
-  "author": "Serge Badio",
-  "homepage": "",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

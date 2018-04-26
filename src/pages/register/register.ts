@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, ToastController, NavController, NavParams } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
+import { LoginPage } from "../login/login";
 
 @IonicPage()
 @Component({
@@ -11,7 +12,8 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class RegisterPage {
   user = {} as User;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(
+    private afAuth: AngularFireAuth,
      public navCtrl: NavController, 
      public navParams: NavParams,
     public toast: ToastController) {
@@ -23,9 +25,11 @@ export class RegisterPage {
 
   async register(user: User){
     try {
-      const result = this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+     const result = this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
       console.log(result);
-      this.navCtrl.push("LoginPage");
+      this.navCtrl.push(LoginPage);
+      
+      
     }
     catch (e) {
       this.toast
