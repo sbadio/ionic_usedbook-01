@@ -1,5 +1,10 @@
 import { Component } from "@angular/core";
-import {  IonicPage,  NavController, ToastController,  NavParams} from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  ToastController,
+  NavParams
+} from "ionic-angular";
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 import { HomePage } from "../home/home";
@@ -23,31 +28,32 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad LoginPage");
   }
-  async login(user: User) {
-    try {
-       const result = this.afAuth.auth.signInWithEmailAndPassword(
-        user.email,
-        user.password
-      );
-      console.log(result);
-      if (result ) {
-       this.navCtrl.setRoot(HomePage);
-      }      
-    } catch (e) {
-      this.navCtrl.push(LoginPage);
-      this.toast
-        .create({
-          message: `Please enter a valid Name or and Email!`,
-          duration: 3000
-        })
-        .present();
-      console.log("Please enter a valid Name or and Email!");
-      console.error(e);
-    }    
+
+  login(user: User) {
+    const result = this.afAuth.auth
+      .signInWithEmailAndPassword(user.email, user.password)
+      .then(user => {
+        this.navCtrl.setRoot(HomePage);
+        console.log(result);
+      })
+      .catch(function(e) {
+        console.error(e);
+      })
+      .then(user => {
+        this.toast
+          .create({
+            message: `Try Again! Enter a valid Name or and Email!`,
+            duration: 3000
+          })
+          .present();
+      });
   }
- register() {
-    this.navCtrl.push(RegisterPage);
-  } 
+
+  async register() {
+    try {
+      this.navCtrl.push(RegisterPage);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }
-
-
