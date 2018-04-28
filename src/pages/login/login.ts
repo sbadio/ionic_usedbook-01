@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import {
   IonicPage,
-  NavController,
-  ToastController,
-  NavParams
+  NavController,  
+  NavParams,
+  AlertController
 } from "ionic-angular";
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
@@ -22,11 +22,19 @@ export class LoginPage {
     private afAuth: AngularFireAuth,
     public navCtrl: NavController,
     public navParams: NavParams,
-    private toast: ToastController
+    private alertCtrl: AlertController
   ) {}
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad LoginPage");
+  }
+
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
 
   login(user: User) {
@@ -34,26 +42,21 @@ export class LoginPage {
       .signInWithEmailAndPassword(user.email, user.password)
       .then(user => {
         this.navCtrl.setRoot(HomePage);
+        alert('Logged in!')
         console.log(result);
       })
-      .catch(function(e) {
-        console.error(e);
+      .catch(function(error) {
+        console.error(error); 
+        alert(error.message);
       })
-      .then(user => {
-        this.toast
-          .create({
-            message: `Try Again! Enter a valid Name or and Email!`,
-            duration: 3000
-          })
-          .present();
-      });
   }
 
   async register() {
     try {
       this.navCtrl.push(RegisterPage);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
+      alert(error.message);  
     }
   }
 }

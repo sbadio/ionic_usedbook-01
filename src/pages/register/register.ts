@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ToastController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 import { LoginPage } from "../login/login";
@@ -15,30 +15,34 @@ export class RegisterPage {
   constructor(
     private afAuth: AngularFireAuth,
      public navCtrl: NavController, 
-     public navParams: NavParams,
-    public toast: ToastController) {
+     public navParams: NavParams,    
+  private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
+
   async register(user: User){
-    try {
-     const result = this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+    const result = this.afAuth.auth
+    .createUserWithEmailAndPassword(user.email, user.password)
+    .then(user => {
+      alert('Registered');
+      this.navCtrl.setRoot(LoginPage);      
       console.log(result);
-      this.navCtrl.push(LoginPage);
-      
-      
-    }
-    catch (e) {
-      this.toast
-        .create({
-          message: `Please enter a valid Name or and Email!`,
-          duration: 3000
-        })
-        .present();
-      console.error(e);
-    } 
+      return;
+    })
+    .catch(function(error) {
+      alert(error.message);
+      console.error(error);
+    })    
   } 
 }

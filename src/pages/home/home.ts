@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
-import { NavController, ToastController, NavParams } from "ionic-angular";
+import { NavController, ToastController, NavParams, AlertController } from "ionic-angular";
 import { BookListPage } from "../book-list/book-list";
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner";
 import { AngularFireAuth } from "angularfire2/auth";
+import { LoginPage } from "../login/login";
 
 @Component({
   selector: "page-home",
@@ -16,7 +17,8 @@ export class HomePage {
     private toast: ToastController,
     private barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private alertCtrl: AlertController
   ) {
     // this.navCtrl.setRoot(HomePage);
   }
@@ -41,10 +43,24 @@ export class HomePage {
     });
   }
 
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
+
+
   bookListPage() {
     this.navCtrl.push(BookListPage);
   }
 
+  logout(){
+    this.navCtrl.setRoot(LoginPage);
+    this.alert('Logged Out');
+    return this.afAuth.auth.signOut();    
+  }
   // async scanBarcode(){
   //   const results = await this.barcode.scan();
   //   console.log(results);
