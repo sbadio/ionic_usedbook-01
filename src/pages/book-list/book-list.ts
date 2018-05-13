@@ -1,10 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController } from "ionic-angular";
-
-import 'rxjs/add/operator/map';
 import { BookDetailsPage } from "../book-details/book-details";
 import { Books } from "../../providers/books/books";
-
 
 @IonicPage()
 @Component({
@@ -47,7 +44,23 @@ export class BookListPage {
   }
 
   itemTapped(event, book) {
+    console.log("ItemTapped");
     console.log(book);
     this.navCtrl.push(BookDetailsPage, { book : book });
+  }
+
+  // itemAddToFavourites(){
+  //   console.log("Added Fav");
+  //   this.navCtrl.push(FavouritesPage;)
+  // }
+  // itemRemoveFromFavourites(){
+  //   console.log("Removed Fav");
+  // }
+
+  itemStarAddToFavourites(){
+    console.log("Added Fav Star");
+  }
+  itemStarRemoveFromFavourites(){
+    console.log("Removed Fav Star");
   }
 }

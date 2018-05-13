@@ -14,7 +14,10 @@
       <p>{{bookDetail.author}}></p>
       <p>{{bookDetail.publisher}}</p>
       <p>{{bookDetail.published}}</p> 
+      <button ion-button color="secondary" (click)="itemTappedFav($event, bookDetail)">Add to Favourites</button>
+      <button ion-button color="danger">Contact Seller</button>
     </ion-item>
+
   
 </ion-content>
 

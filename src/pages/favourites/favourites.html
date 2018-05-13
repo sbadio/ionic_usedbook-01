@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Favourites</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-input type="text" placeholder="Search Favourites Book..."></ion-input>
+  
+    <ion-list >
+      <ion-item (tap)="itemTapped($event)">
+        <ion-thumbnail item-left>
+          <img src="http://placehold.it/300X300"/>
+        </ion-thumbnail>
+        
+        <p>Title Mock</p>
+        <p>Author Mock</p>
+        <ion-buttons></ion-buttons>
+        <ion-icon color="secondary" name="star" clear item-end (press)="itemFavTapped($event)"></ion-icon>   
+      </ion-item>    
+    </ion-list>
+
+    <ion-list >
+        <ion-item (tap)="itemTapped($event)">
+          <ion-thumbnail item-left>
+            <img src="http://placehold.it/300X300"/>
+          </ion-thumbnail>
+          
+          <p>Title Mock</p>
+          <p>Author Mock</p>
+          <ion-icon color="secondary" name="star" clear item-end  (tap)="itemFavTapped($event)"></ion-icon>   
+        </ion-item>    
+      </ion-list>
+   
+</ion-content>

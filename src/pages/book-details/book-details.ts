@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FavouritesPage } from '../favourites/favourites';
 
 @IonicPage()
 @Component({
@@ -21,4 +22,17 @@ export class BookDetailsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BookDetailsPage');
   }
+
+  itemTapped(event, book) {
+    console.log("ItemTapped");
+    console.log(book);
+    this.navCtrl.push(FavouritesPage, { book : book });
+  }
+
+  itemTappedFav(event, favBook) {
+    console.log("ItemTappedFav");
+    console.log(favBook);
+    this.navCtrl.push(FavouritesPage, { favBook : favBook });
+  }
+
 }

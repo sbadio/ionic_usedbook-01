@@ -17,6 +17,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HttpModule } from '@angular/http';
 import { Books } from '../providers/books/books';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
+import { FavouritesPage } from '../pages/favourites/favourites';
 
 
 
@@ -27,7 +28,8 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
     RegisterPage,    
     BookListPage,
     BookDetailsPage,
-    HomePage    
+    HomePage,
+    FavouritesPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
     RegisterPage,
     BookListPage,     
     BookDetailsPage,
-    HomePage
+    HomePage,
+    FavouritesPage
   ],
   providers: [
     StatusBar,
